@@ -62,14 +62,14 @@
 
 * **`analyze_resume` (분석)**: LLM을 사용하여 지원자의 이력서와 회사의 JD 텍스트를 동시에 분석합니다. 두 문서에서 각각 10개의 핵심 키워드를 추출하고, 이력서 핵심 요약을 생성하여 JSON 형식으로 반환합니다. 
 * **`generate_question_strategy` (전략 수립)**: 분석된 키워드와 요약본을 바탕으로, LLM이 **3가지 평가 분야(①경력과 경험, ②커뮤니케이션 능력, ③문제해결력)**에 대한 면접 전략과 구체적인 예시 질문을 생성합니다. 
+[이미지: analyze_resume 함수]
 
 ![[analyze_resume 함수]](https://github.com/Kim-geun-woo/AI-Interviewer-Agent/blob/main/images/analyze_resume.png)
 
-[이미지: analyze_resume 함수]
+[이미지: generate_question_strategy 함수]
 
 ![generate_question_strategy 함수](https://github.com/Kim-geun-woo/AI-Interviewer-Agent/blob/main/images/generate_question_strategy.png)
 
-[이미지: generate_question_strategy 함수]
 
 ### ✅ 2. Gradio 기반 웹 인터페이스 연동
 
@@ -79,15 +79,16 @@
 * **상태 관리**: Gradio의 `session_state`를 활용하여 사용자별 면접 상태(State)를 관리했습니다.
 * **실시간 채팅**: 사용자가 답변을 입력(`user_input.submit`)하면, `chat_interview` 함수가 `graph.invoke(state)`를 호출하여 에이전트의 다음 질문이나 최종 요약본을 받아와 챗봇 UI에 표시합니다.
 
+[이미지: Gradio 인터페이스]
+
 ![[Gradio 인터페이스]](https://github.com/Kim-geun-woo/AI-Interviewer-Agent/blob/main/images/Gradio%20%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4.png)
 
-[이미지: Gradio 인터페이스]
 
 ### ✅ 3. (Project) LangGraph 기반 자가-성찰 에이전트
 
-![[LangGraph 에이전트 흐름도]](https://github.com/Kim-geun-woo/AI-Interviewer-Agent/blob/main/images/Graph.png)
-
 [이미지: LangGraph 에이전트 흐름도]
+
+![[LangGraph 에이전트 흐름도]](https://github.com/Kim-geun-woo/AI-Interviewer-Agent/blob/main/images/Graph.png)
 
 팀 프로젝트의 핵심 로직인 LangGraph의 자가-성찰(Self-Reflection) 흐름을 이해하고, 저의 사전 준비 모듈이 이 흐름에 잘 연동되도록 했습니다.
 
@@ -98,9 +99,9 @@
 
 ## 📈 주요 개선 사항 (v1.0 → v2.0)
 
-![인터뷰 점수 분석 시각화](https://github.com/Kim-geun-woo/AI-Interviewer-Agent/blob/main/images/%EC%A0%90%EC%88%98%20%EC%8B%9C%EA%B0%81%ED%99%94.png)
-
 [인터뷰 점수 분석 시각화]
+
+![인터뷰 점수 분석 시각화](https://github.com/Kim-geun-woo/AI-Interviewer-Agent/blob/main/images/%EC%A0%90%EC%88%98%20%EC%8B%9C%EA%B0%81%ED%99%94.png)
 
 | 구분 | v1.0 (기존 한계) | v2.0 (주요 개선 사항) |
 | :--- | :--- | :--- |

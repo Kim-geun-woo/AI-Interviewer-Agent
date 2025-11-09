@@ -113,7 +113,7 @@
 * `Step2_제공파일_AI면접관 Agent_with Gradio.2.0.ipynb` (Gradio 실행 파일)
 * `채용공고.docx` (예시 채용공고)
 * `Resume_sample.pdf` (예시 이력서)
-* `Gradio 면접 결과.txt` (Gradio 결과물  `.txt` 파일로 옮김)
+* `Gradio 면접 결과.txt` (Gradio 결과물을 `.txt` 파일로 옮김)
 
 ---
 

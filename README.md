@@ -83,6 +83,8 @@
 * **흐름**: (1)`evaluate_answer` (답변 평가) → (2)`reflect` (평가 검증) → (3a)`re_evaluate_answer` (부적절 시 재평가) 또는 (3b)`decide_next_step` (적절 시 다음 행동 결정)
 * **개선**: 이 구조를 통해 LLM의 평가가 부적절할 경우(예: 점수가 너무 짜거나 후할 때) 에이전트가 스스로 이를 인지하고 재평가를 수행하여, 더 공정하고 정확한 면접을 진행할 수 있게 되었습니다.
 
+![[Gradio 인터페이스]](https://github.com/Kim-geun-woo/AI-Interviewer-Agent/blob/main/images/Gradio%20%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4.png)
+![[Gradio 인터페이스]](https://github.com/Kim-geun-woo/AI-Interviewer-Agent/blob/main/images/Gradio%20%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4.png)
 ---
 
 ## 📈 주요 개선 사항 (v1.0 → v2.0)
@@ -90,9 +92,9 @@
 | 구분 | v1.0 (기존 한계) | v2.0 (주요 개선 사항) |
 | :--- | :--- | :--- |
 | **면접 흐름** | `if-else` 기반의 정해진 순서로만 진행 (Source 90) | **LLM 기반 `decide_next_step`** 도입으로 '심화 질문', '주제 전환', '종료' 등 유연한 흐름 제어  |
-| **평가 품질** | 2가지 단순 기준으로 평가 | **5가지 세분화된 기준(가중치 적용)**으로 평가 (Source 101)<br>**`reflect` 노드**를 추가하여 평가 자체를 검증하고 **자가-성찰(Self-Correction)** 수행 |
+| **평가 품질** | 2가지 단순 기준으로 평가 | **5가지 세분화된 기준(가중치 적용)**으로 평가 <br>**`reflect` 노드**를 추가하여 평가 자체를 검증하고 **자가-성찰(Self-Correction)** 수행 |
 | **사용성** | Jupyter Notebook 환경에서만 실행 | **Gradio 웹 인터페이스**를 구현하여 실제 사용자(면접자)가 쉽게 접근하고 사용할 수 있도록 개선 |
-| **상태 관리** | 변수 누락 등 팀원 간 State 불일치 문제 (Source 140) | Excel 시트를 활용한 **State 실시간 기록 및 공유**로 디버깅 효율 향상) |
+| **상태 관리** | 변수 누락 등 팀원 간 State 불일치 문제 | Excel 시트를 활용한 **State 실시간 기록 및 공유**로 디버깅 효율 향상) |
 
 ---
 

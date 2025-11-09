@@ -18,7 +18,7 @@
 
 | 역할 | 담당자 | 주요 업무 |
 | :--------- | :--------- | :--- |
-| **사전 준비 고도화 / Gradio 연결** | **본인** | - **이력서/채용공고 교차 분석:** `analyze_resume` 함수의 LLM 프롬프트를 고도화하여, 이력서와 채용공고(JD)를 동시에 분석하고 양측의 핵심 키워드를 추출하도록 개선<br>- **맞춤형 면접 전략 수립:** `generate_question_strategy` 함수의 프롬프트를 수정하여, 추출된 키워드를 기반으로 3가지 평가 분야(경험, 소통, 문제해결력)에 따른 맞춤형 면접 전략 및 예시 질문 생성<br>- **Gradio 웹 인터페이스 구현:** `app.py`를 작성하여, 사용자가 이력서와 JD를 업로드하고 LangGraph 에이전트와 실시간 면접을 진행하며, 최종 보고서를 받을 수 있는 웹 UI 구현 |
+| **사전 준비 고도화 / Gradio 연결** | **본인** | - **이력서/채용공고 교차 분석:** `analyze_resume` 함수의 LLM 프롬프트를 고도화하여, 이력서와 채용공고(JD)를 동시에 분석하고 양측의 핵심 키워드를 추출하도록 개선<br>- **맞춤형 면접 전략 수립:** `generate_question_strategy` 함수의 프롬프트를 수정하여, 추출된 키워드를 기반으로 3가지 평가 분야(경험, 소통, 문제해결력)에 따른 맞춤형 면접 전략 및 예시 질문 생성<br>- **Gradio 웹 인터페이스 구현:** 사용자가 이력서와 JD를 업로드하고 LangGraph 에이전트와 실시간 면접을 진행하며, 최종 보고서를 받을 수 있는 웹 UI 구현 |
 | **PM** | 팀원 A | - 과제 총괄 진행<br>- State, Graph 담당<br>- 결과 보고서 작성 |
 | **답변 평가 고도화** | 팀원 B | - Reflection 노드 추가 및 그래프 수정<br>- Conversation 관리 |
 | **인터뷰 진행 고도화** | 팀원 C, 팀원 D | - 조건 설계<br>- 조건에 따른 노드 연결(그래프 수정) |
@@ -60,14 +60,14 @@
 
 면접의 품질은 '사전 준비' 단계에서 결정된다고 판단하여, 이력서와 채용공고(JD)를 심층적으로 분석하는 로직을 고도화했습니다.
 
-* **`analyze_resume` (분석)**: LLM을 사용하여 지원자의 이력서와 회사의 JD 텍스트를 동시에 분석합니다. 두 문서에서 각각 10개의 핵심 키워드를 추출하고, 이력서 핵심 요약을 생성하여 JSON 형식으로 반환합니다. (Source 74)
-* **`generate_question_strategy` (전략 수립)**: 분석된 키워드와 요약본을 바탕으로, LLM이 **3가지 평가 분야(①경력과 경험, ②커뮤니케이션 능력, ③문제해결력)**에 대한 면접 전략과 구체적인 예시 질문을 생성합니다. (Source 75)
+* **`analyze_resume` (분석)**: LLM을 사용하여 지원자의 이력서와 회사의 JD 텍스트를 동시에 분석합니다. 두 문서에서 각각 10개의 핵심 키워드를 추출하고, 이력서 핵심 요약을 생성하여 JSON 형식으로 반환합니다. 
+* **`generate_question_strategy` (전략 수립)**: 분석된 키워드와 요약본을 바탕으로, LLM이 **3가지 평가 분야(①경력과 경험, ②커뮤니케이션 능력, ③문제해결력)**에 대한 면접 전략과 구체적인 예시 질문을 생성합니다. 
 
 ![proProcessing\_Interview 프롬프트 정의](https://storage.googleapis.com/agent-docs-test-buck/images_public/1c750b28-11f8-4e55-901d-72e7370d061c.png)
 
 ### ✅ 2. Gradio 기반 웹 인터페이스 연동
 
-개발된 LangGraph 에이전트를 실제 사용자가 활용할 수 있도록 `app.py` 파일을 작성하여 Gradio 웹 인터페이스를 구현했습니다. (Source: `Step2_...Gradio_2_0.ipynb`)
+개발된 LangGraph 에이전트를 실제 사용자가 활용할 수 있도록 작성하여 Gradio 웹 인터페이스를 구현했습니다. 
 
 * **파일 업로드**: 사용자가 이력서(PDF/DOCX)와 채용공고(JD) 파일을 업로드하면, `upload_and_initialize` 함수가 `preProcessing_Interview` 로직을 실행합니다.
 * **상태 관리**: Gradio의 `session_state`를 활용하여 사용자별 면접 상태(State)를 관리했습니다.
@@ -77,7 +77,7 @@
 
 팀 프로젝트의 핵심 로직인 LangGraph의 자가-성찰(Self-Reflection) 흐름을 이해하고, 저의 사전 준비 모듈이 이 흐름에 잘 연동되도록 했습니다.
 
-* **흐름**: (1)`evaluate_answer` (답변 평가) → (2)`reflect` (평가 검증) → (3a)`re_evaluate_answer` (부적절 시 재평가) 또는 (3b)`decide_next_step` (적절 시 다음 행동 결정) (Source 76-99, 122-137)
+* **흐름**: (1)`evaluate_answer` (답변 평가) → (2)`reflect` (평가 검증) → (3a)`re_evaluate_answer` (부적절 시 재평가) 또는 (3b)`decide_next_step` (적절 시 다음 행동 결정)
 * **개선**: 이 구조를 통해 LLM의 평가가 부적절할 경우(예: 점수가 너무 짜거나 후할 때) 에이전트가 스스로 이를 인지하고 재평가를 수행하여, 더 공정하고 정확한 면접을 진행할 수 있게 되었습니다.
 
 ---
@@ -86,17 +86,17 @@
 
 | 구분 | v1.0 (기존 한계) | v2.0 (주요 개선 사항) |
 | :--- | :--- | :--- |
-| **면접 흐름** | `if-else` 기반의 정해진 순서로만 진행 (Source 90) | **LLM 기반 `decide_next_step`** 도입으로 '심화 질문', '주제 전환', '종료' 등 유연한 흐름 제어 (Source 92) |
-| **평가 품질** | 2가지 단순 기준으로 평가 | **5가지 세분화된 기준(가중치 적용)**으로 평가 (Source 101)<br>**`reflect` 노드**를 추가하여 평가 자체를 검증하고 **자가-성찰(Self-Correction)** 수행 (Source 84-87) |
+| **면접 흐름** | `if-else` 기반의 정해진 순서로만 진행 (Source 90) | **LLM 기반 `decide_next_step`** 도입으로 '심화 질문', '주제 전환', '종료' 등 유연한 흐름 제어  |
+| **평가 품질** | 2가지 단순 기준으로 평가 | **5가지 세분화된 기준(가중치 적용)**으로 평가 (Source 101)<br>**`reflect` 노드**를 추가하여 평가 자체를 검증하고 **자가-성찰(Self-Correction)** 수행 |
 | **사용성** | Jupyter Notebook 환경에서만 실행 | **Gradio 웹 인터페이스**를 구현하여 실제 사용자(면접자)가 쉽게 접근하고 사용할 수 있도록 개선 |
-| **상태 관리** | 변수 누락 등 팀원 간 State 불일치 문제 (Source 140) | Excel 시트를 활용한 **State 실시간 기록 및 공유**로 디버깅 효율 향상 (Source 141-142) |
+| **상태 관리** | 변수 누락 등 팀원 간 State 불일치 문제 (Source 140) | Excel 시트를 활용한 **State 실시간 기록 및 공유**로 디버깅 효율 향상) |
 
 ---
 
 ## 💡 회고 (What I Learned)
 
 * **Prompt Engineering**: LLM이 `analyze_resume`와 `generate_question_strategy`에서 복잡한 요구사항(예: 3가지 카테고리, JSON 형식)을 정확히 따르도록 프롬프트를 구조화하고 개선하는 과정을 통해 프롬프트 엔지니어링의 중요성을 배웠습니다.
-* **LangGraph 상태 관리**: LangGraph는 강력하지만 비동기적 흐름과 State 관리가 복잡했습니다. 팀원들과 Excel로 State를 추적하며 디버깅한 경험(Source 138)은 복잡한 에이전트 개발 시 협업의 핵심임을 깨달았습니다.
+* **LangGraph 상태 관리**: LangGraph는 강력하지만 비동기적 흐름과 State 관리가 복잡했습니다. 팀원들과 Excel로 State를 추적하며 디버깅한 경험은 복잡한 에이전트 개발 시 협업의 핵심임을 깨달았습니다.
 * **End-to-End 구현**: 단순히 기능(함수)을 개발하는 것을 넘어, 파일 입력(`PyMuPDF`)부터 에이전트 로직(`LangGraph`), 그리고 최종 UI(`Gradio`)까지 연결하는 End-to-End 애플리케이션 구축 경험을 쌓았습니다.
 * **에이전트의 성찰**: `reflect` 노드를 구현하며, LLM이 단순히 작업을 수행하는 것을 넘어 '자신의 작업을 검증'하게 만드는 '성찰(Reflection)' 개념이 에이전트의 신뢰도를 높이는 핵심 요소임을 이해했습니다.
 
@@ -105,14 +105,16 @@
 ## 📂 프로젝트 산출물
 
 * `결과보고서(AI_05반_09조).pptx`
-* `Step1_AI면접관 Agent v1.0.ipynb` (비교용 v1.0)
-* `Step2_AI면접관 Agent v2.0.ipynb` (v2.0 및 Gradio 코드)
-* `app.py` (Gradio 실행 파일)
+* `Step1_AI면접관 Agent v1.0.ipynb` (v1.0 버전)
+* `Step2_AI면접관 Agent v2.0.ipynb` (v2.0 버전)
+* `Step2_제공파일_AI면접관 Agent_with Gradio.2.0.ipynb` (Gradio 실행 파일)
+* `채용공고.docx` (예시 채용공고)
+* `Resume_sample.pdf` (예시 이력서)
 
 ---
 
 ## 🖼️ 발표 자료 (Presentation)
 
-> 📌 프로젝트 최종 발표에 사용된 PPT 자료입니다. (Source 72-142)
-> 
-> ![AI 면접관 에이전트 발표 자료](https://storage.googleapis.com/agent-docs-test-buck/images_public/f557343b-74df-4456-91e8-d6c5cc8b6b19.png)
+> 📌 프로젝트 최종 발표에 사용된 PPT 자료입니다.
+
+[![발표자료 확인](https://github.com/Kim-geun-woo/AI-Interviewer-Agent/blob/main/images/ppt.png)](https://github.com/Kim-geun-woo/AI-Interviewer-Agent/blob/main/docs/%EA%B2%B0%EA%B3%BC%EB%B3%B4%EA%B3%A0%EC%84%9C(AI_05%EB%B0%98_09%EC%A1%B0).pdf)

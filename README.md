@@ -61,7 +61,8 @@
 면접의 품질은 '사전 준비' 단계에서 결정된다고 판단하여, 이력서와 채용공고(JD)를 심층적으로 분석하는 로직을 고도화했습니다.
 
 * **`analyze_resume` (분석)**: LLM을 사용하여 지원자의 이력서와 회사의 JD 텍스트를 동시에 분석합니다. 두 문서에서 각각 10개의 핵심 키워드를 추출하고, 이력서 핵심 요약을 생성하여 JSON 형식으로 반환합니다. 
-* **`generate_question_strategy` (전략 수립)**: 분석된 키워드와 요약본을 바탕으로, LLM이 **3가지 평가 분야(①경력과 경험, ②커뮤니케이션 능력, ③문제해결력)**에 대한 면접 전략과 구체적인 예시 질문을 생성합니다. 
+* **`generate_question_strategy` (전략 수립)**: 분석된 키워드와 요약본을 바탕으로, LLM이 **3가지 평가 분야(①경력과 경험, ②커뮤니케이션 능력, ③문제해결력)**에 대한 면접 전략과 구체적인 예시 질문을 생성합니다.
+
 [이미지: analyze_resume 함수]
 
 ![[analyze_resume 함수]](https://github.com/Kim-geun-woo/AI-Interviewer-Agent/blob/main/images/analyze_resume.png)

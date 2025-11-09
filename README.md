@@ -78,20 +78,23 @@
 
 ### ✅ 3. (Project) LangGraph 기반 자가-성찰 에이전트
 
+![[LangGraph 에이전트 흐름도]](https://github.com/Kim-geun-woo/AI-Interviewer-Agent/blob/main/images/Graph.png)
+
 팀 프로젝트의 핵심 로직인 LangGraph의 자가-성찰(Self-Reflection) 흐름을 이해하고, 저의 사전 준비 모듈이 이 흐름에 잘 연동되도록 했습니다.
 
 * **흐름**: (1)`evaluate_answer` (답변 평가) → (2)`reflect` (평가 검증) → (3a)`re_evaluate_answer` (부적절 시 재평가) 또는 (3b)`decide_next_step` (적절 시 다음 행동 결정)
 * **개선**: 이 구조를 통해 LLM의 평가가 부적절할 경우(예: 점수가 너무 짜거나 후할 때) 에이전트가 스스로 이를 인지하고 재평가를 수행하여, 더 공정하고 정확한 면접을 진행할 수 있게 되었습니다.
 
 ![[Gradio 인터페이스]](https://github.com/Kim-geun-woo/AI-Interviewer-Agent/blob/main/images/Gradio%20%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4.png)
-![[Gradio 인터페이스]](https://github.com/Kim-geun-woo/AI-Interviewer-Agent/blob/main/images/Gradio%20%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4.png)
 ---
 
 ## 📈 주요 개선 사항 (v1.0 → v2.0)
 
+![인터뷰 점수 분석 시각화](https://github.com/Kim-geun-woo/AI-Interviewer-Agent/blob/main/images/%EC%A0%90%EC%88%98%20%EC%8B%9C%EA%B0%81%ED%99%94.png)
+
 | 구분 | v1.0 (기존 한계) | v2.0 (주요 개선 사항) |
 | :--- | :--- | :--- |
-| **면접 흐름** | `if-else` 기반의 정해진 순서로만 진행 (Source 90) | **LLM 기반 `decide_next_step`** 도입으로 '심화 질문', '주제 전환', '종료' 등 유연한 흐름 제어  |
+| **면접 흐름** | `if-else` 기반의 정해진 순서로만 진행  | **LLM 기반 `decide_next_step`** 도입으로 '심화 질문', '주제 전환', '종료' 등 유연한 흐름 제어  |
 | **평가 품질** | 2가지 단순 기준으로 평가 | **5가지 세분화된 기준(가중치 적용)**으로 평가 <br>**`reflect` 노드**를 추가하여 평가 자체를 검증하고 **자가-성찰(Self-Correction)** 수행 |
 | **사용성** | Jupyter Notebook 환경에서만 실행 | **Gradio 웹 인터페이스**를 구현하여 실제 사용자(면접자)가 쉽게 접근하고 사용할 수 있도록 개선 |
 | **상태 관리** | 변수 누락 등 팀원 간 State 불일치 문제 | Excel 시트를 활용한 **State 실시간 기록 및 공유**로 디버깅 효율 향상) |
@@ -116,6 +119,7 @@
 * `채용공고.docx` (예시 채용공고)
 * `Resume_sample.pdf` (예시 이력서)
 * `Gradio 면접 결과.txt` (Gradio 결과물을 `.txt` 파일로 옮김)
+* `버전 관리 수정 업데이트.xlsx` (State 수정사항 공유)
 
 ---
 

@@ -38,7 +38,7 @@
 | 언어 | Python |
 | LMOps / Agent | **LangChain**, **LangGraph**, OpenAI (GPT-4o-mini) |
 | 데이터 | **Chroma DB** (Vector DB), PyMuPDF, python-docx |
-| UI / 환경 | **Gradio**, Google Colab, Jupyter Notebook |
+| UI / 환경 | **Gradio**, Google Colab |
 
 ---
 

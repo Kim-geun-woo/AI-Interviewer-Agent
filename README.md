@@ -64,7 +64,10 @@
 * **`generate_question_strategy` (전략 수립)**: 분석된 키워드와 요약본을 바탕으로, LLM이 **3가지 평가 분야(①경력과 경험, ②커뮤니케이션 능력, ③문제해결력)**에 대한 면접 전략과 구체적인 예시 질문을 생성합니다. 
 
 ![[analyze_resume 함수]](https://github.com/Kim-geun-woo/AI-Interviewer-Agent/blob/main/images/analyze_resume.png)
+[이미지: analyze_resume 함수]
+
 ![generate_question_strategy 함수](https://github.com/Kim-geun-woo/AI-Interviewer-Agent/blob/main/images/generate_question_strategy.png)
+[이미지: generate_question_strategy 함수]
 
 ### ✅ 2. Gradio 기반 웹 인터페이스 연동
 
@@ -75,22 +78,24 @@
 * **실시간 채팅**: 사용자가 답변을 입력(`user_input.submit`)하면, `chat_interview` 함수가 `graph.invoke(state)`를 호출하여 에이전트의 다음 질문이나 최종 요약본을 받아와 챗봇 UI에 표시합니다.
 
 ![[Gradio 인터페이스]](https://github.com/Kim-geun-woo/AI-Interviewer-Agent/blob/main/images/Gradio%20%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4.png)
+[이미지: Gradio 인터페이스]
 
 ### ✅ 3. (Project) LangGraph 기반 자가-성찰 에이전트
 
 ![[LangGraph 에이전트 흐름도]](https://github.com/Kim-geun-woo/AI-Interviewer-Agent/blob/main/images/Graph.png)
+[이미지: LangGraph 에이전트 흐름도]
 
 팀 프로젝트의 핵심 로직인 LangGraph의 자가-성찰(Self-Reflection) 흐름을 이해하고, 저의 사전 준비 모듈이 이 흐름에 잘 연동되도록 했습니다.
 
 * **흐름**: (1)`evaluate_answer` (답변 평가) → (2)`reflect` (평가 검증) → (3a)`re_evaluate_answer` (부적절 시 재평가) 또는 (3b)`decide_next_step` (적절 시 다음 행동 결정)
 * **개선**: 이 구조를 통해 LLM의 평가가 부적절할 경우(예: 점수가 너무 짜거나 후할 때) 에이전트가 스스로 이를 인지하고 재평가를 수행하여, 더 공정하고 정확한 면접을 진행할 수 있게 되었습니다.
 
-![[Gradio 인터페이스]](https://github.com/Kim-geun-woo/AI-Interviewer-Agent/blob/main/images/Gradio%20%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4.png)
 ---
 
 ## 📈 주요 개선 사항 (v1.0 → v2.0)
 
 ![인터뷰 점수 분석 시각화](https://github.com/Kim-geun-woo/AI-Interviewer-Agent/blob/main/images/%EC%A0%90%EC%88%98%20%EC%8B%9C%EA%B0%81%ED%99%94.png)
+[인터뷰 점수 분석 시각화]
 
 | 구분 | v1.0 (기존 한계) | v2.0 (주요 개선 사항) |
 | :--- | :--- | :--- |
@@ -125,6 +130,6 @@
 
 ## 🖼️ 발표 자료 (Presentation)
 
-> 📌 프로젝트 최종 발표에 사용된 PPT 자료입니다.
 
 [![발표자료 확인](https://github.com/Kim-geun-woo/AI-Interviewer-Agent/blob/main/images/ppt.png)](https://github.com/Kim-geun-woo/AI-Interviewer-Agent/blob/main/docs/%EA%B2%B0%EA%B3%BC%EB%B3%B4%EA%B3%A0%EC%84%9C(AI_05%EB%B0%98_09%EC%A1%B0).pdf)
+> 📌 썸네일을 클릭하면 발표자료를 바로 확인할 수 있습니다.

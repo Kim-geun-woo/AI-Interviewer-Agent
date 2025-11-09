@@ -63,7 +63,8 @@
 * **`analyze_resume` (분석)**: LLM을 사용하여 지원자의 이력서와 회사의 JD 텍스트를 동시에 분석합니다. 두 문서에서 각각 10개의 핵심 키워드를 추출하고, 이력서 핵심 요약을 생성하여 JSON 형식으로 반환합니다. 
 * **`generate_question_strategy` (전략 수립)**: 분석된 키워드와 요약본을 바탕으로, LLM이 **3가지 평가 분야(①경력과 경험, ②커뮤니케이션 능력, ③문제해결력)**에 대한 면접 전략과 구체적인 예시 질문을 생성합니다. 
 
-![proProcessing\_Interview 프롬프트 정의](https://storage.googleapis.com/agent-docs-test-buck/images_public/1c750b28-11f8-4e55-901d-72e7370d061c.png)
+![analyze_resume 함수]([https://storage.googleapis.com/agent-docs-test-buck/images_public/1c750b28-11f8-4e55-901d-72e7370d061c.png](https://github.com/Kim-geun-woo/AI-Interviewer-Agent/blob/main/images/analyze_resume.png))
+![generate_question_strategy 함수]([https://storage.googleapis.com/agent-docs-test-buck/images_public/1c750b28-11f8-4e55-901d-72e7370d061c.png](https://github.com/Kim-geun-woo/AI-Interviewer-Agent/blob/main/images/generate_question_strategy.png))
 
 ### ✅ 2. Gradio 기반 웹 인터페이스 연동
 
@@ -72,6 +73,8 @@
 * **파일 업로드**: 사용자가 이력서(PDF/DOCX)와 채용공고(JD) 파일을 업로드하면, `upload_and_initialize` 함수가 `preProcessing_Interview` 로직을 실행합니다.
 * **상태 관리**: Gradio의 `session_state`를 활용하여 사용자별 면접 상태(State)를 관리했습니다.
 * **실시간 채팅**: 사용자가 답변을 입력(`user_input.submit`)하면, `chat_interview` 함수가 `graph.invoke(state)`를 호출하여 에이전트의 다음 질문이나 최종 요약본을 받아와 챗봇 UI에 표시합니다.
+
+![Gradio 인터페이스]([https://github.com/Kim-geun-woo/AI-Interviewer-Agent/blob/main/images/Gradio%20%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4.png))  
 
 ### ✅ 3. (Project) LangGraph 기반 자가-성찰 에이전트
 
@@ -110,6 +113,7 @@
 * `Step2_제공파일_AI면접관 Agent_with Gradio.2.0.ipynb` (Gradio 실행 파일)
 * `채용공고.docx` (예시 채용공고)
 * `Resume_sample.pdf` (예시 이력서)
+* `Gradio 면접 결과.txt` (Gradio 결과물  `.txt` 파일로 옮김)
 
 ---
 

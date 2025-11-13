@@ -115,10 +115,9 @@
 
 ## 💡 회고 (What I Learned)
 
-* **Prompt Engineering**: LLM이 `analyze_resume`와 `generate_question_strategy`에서 복잡한 요구사항(예: 3가지 카테고리, JSON 형식)을 정확히 따르도록 프롬프트를 구조화하고 개선하는 과정을 통해 프롬프트 엔지니어링의 중요성을 배웠습니다.
-* **LangGraph 상태 관리**: LangGraph는 강력하지만 비동기적 흐름과 State 관리가 복잡했습니다. 팀원들과 Excel로 State를 추적하며 디버깅한 경험은 복잡한 에이전트 개발 시 협업의 핵심임을 깨달았습니다.
+* **LangGraph 상태 관리**: LangGraph는 강력하지만 비동기적 흐름과 State 관리가 복잡했습니다. 팀원들과 Excel로 State를 추적하며 디버깅한 경험은 복잡한 에이전트 개발 시 협업의 핵심임을 알게 되었습니다.
+* **Prompt Engineering**: LLM이 `analyze_resume`와 `generate_question_strategy`에서 복잡한 요구사항을 정확히 따르도록 프롬프트를 구조화하고 개선하는 과정을 통해 프롬프트 엔지니어링의 중요성을 배웠습니다.
 * **End-to-End 구현**: 단순히 기능(함수)을 개발하는 것을 넘어, 파일 입력(`PyMuPDF`)부터 에이전트 로직(`LangGraph`), 그리고 최종 UI(`Gradio`)까지 연결하는 End-to-End 애플리케이션 구축 경험을 쌓았습니다.
-* **에이전트의 성찰**: `reflect` 노드를 구현하며, LLM이 단순히 작업을 수행하는 것을 넘어 '자신의 작업을 검증'하게 만드는 '성찰(Reflection)' 개념이 에이전트의 신뢰도를 높이는 핵심 요소임을 이해했습니다.
 
 ---
 

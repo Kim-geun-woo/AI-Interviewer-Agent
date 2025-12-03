@@ -48,7 +48,7 @@
 | :--- | :--- |
 | **v1.0 분석** | 기존 규칙 기반(if-else) 면접 Agent의 한계점 분석 |
 | **v2.0 설계** | **LangGraph** 기반의 유연하고 자가-성찰(`reflect`)이 가능한 에이전트 구조 설계 |
-| **사전 준비 (본인)** | `analyze_resume` (이력서/JD 분석), `generate_question_strategy` (면접 전략 수립) 기능 고도화 |
+| **사전 준비 (본인)**   | `analyze_resume` (이력서/JD 분석), `generate_question_strategy` (면접 전략 수립) 기능 고도화 |
 | **Agent 로직 구현** | `evaluate` → `reflect` → `re_evaluate_answer` / `decide_next_step` → `generate` 등 핵심 노드 개발 | 
 | **UI 연동 (본인)** | **Gradio**(`app.py`)를 활용하여 사용자가 파일을 업로드하고 실시간 채팅으로 면접을 볼 수 있는 웹 인터페이스 구현 |
 
